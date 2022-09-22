@@ -6,8 +6,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const PORT = 3000
-
 let persons = [
   {
     id: 1,
@@ -75,5 +73,9 @@ app.delete('/api/persons/:id', (req, res) => {
   res.status(204).end()
 })
 
-app.listen(PORT)
-console.log("Server running on port " + PORT)
+const PORT = process.env.PORT || 3001
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
+      
